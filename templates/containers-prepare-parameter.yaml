@@ -1,0 +1,48 @@
+# Generated with the following on 2021-12-27T06:15:37.942294
+#
+#   openstack tripleo container image prepare default --local-push-destination --output-env-file /home/stack/containers-prepare-parameter.yaml
+#
+
+parameter_defaults:
+  ContainerImagePrepare:
+  - push_destination: true
+    set:
+      ceph_alertmanager_image: alertmanager
+      ceph_alertmanager_namespace: quay.ceph.io/prometheus
+      ceph_alertmanager_tag: v0.16.2
+      ceph_grafana_image: grafana
+      ceph_grafana_namespace: quay.ceph.io/app-sre
+      ceph_grafana_tag: 6.7.4
+      ceph_image: daemon
+      ceph_namespace: quay.io/ceph
+      ceph_node_exporter_image: node-exporter
+      ceph_node_exporter_namespace: quay.ceph.io/prometheus
+      ceph_node_exporter_tag: v0.17.0
+      ceph_prometheus_image: prometheus
+      ceph_prometheus_namespace: quay.ceph.io/prometheus
+      ceph_prometheus_tag: v2.7.2
+      ceph_tag: v6.0.6-stable-6.0-pacific-centos-8-x86_64
+      name_prefix: openstack-
+      name_suffix: ''
+      namespace: quay.io/tripleowallaby
+      neutron_driver: ovn
+      rhel_containers: false
+      tag: current-tripleo
+    tag_from_label: rdo_version
+
+  - push_destination: true
+    includes:
+    - ironic-conductor
+    modify_role: tripleo-modify-image
+    modify_append_tag: "-hotfix"
+    modify_vars:
+      tasks_from: rpm_install.yml
+      rpms_path: /home/stack/ironic_hotfix
+  # - push_destination: true
+  #   includes:
+  #   - ironic_api
+  #   modify_role: tripleo-modify-image
+  #   modify_append_tag: "-hotfix"
+  #   modify_vars:
+  #     tasks_from: rpm_install.yml
+  #     rpms_path: /home/stack/ironic_api_hotfix
