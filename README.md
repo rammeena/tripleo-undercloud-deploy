@@ -94,3 +94,13 @@ it will be found in something like below directotry:
 replace the content of this file with below patced file:
   https://review.opendev.org/c/x/ironic-staging-drivers/+/784879/6/ironic_staging_drivers/ovirt/ovirt.py#147
 
+file location: 
+https://review.opendev.org/plugins/gitiles/x/ironic-staging-drivers/+/refs/changes/79/784879/6/ironic_staging_drivers/ovirt/ovirt.py
+
+However this file is available in this repo as well, just copy this in above container file location:
+
+cp -v ovirt.py /var/lib/containers/storage/overlay/4a813aa1947e62b2487a3b164113fd0c89f8fc878fccfcced756a2249c939979/merged/usr/lib/python3.6/site-packages/ironic_staging_drivers/ovirt/ovirt.py
+
+Now restart ironic conductor podman container.
+
+Now baremetal node enrollement should work fine.
