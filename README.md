@@ -45,6 +45,7 @@ openstack undercloud install
 ```
 # Prepare Overcloud CentOS 8 steam images
 ```
+export STABLE_RELEASE="wallaby"
 export OS_YAML="/usr/share/openstack-tripleo-common/image-yaml/overcloud-images-centos8.yaml"
 export DIB_YUM_REPO_CONF="/etc/yum.repos.d/delorean* /etc/yum.repos.d/tripleo-centos-*"
 export DIB_RELEASE=8-stream
